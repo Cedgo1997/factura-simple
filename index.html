@@ -1,32 +1,102 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Factura</title>
 	</head>
 	<body>
-		<form>
+		<!-- DATOS DEL COMPRADOR -->
+
+		<div>
+			<h3>Ingrese sus Datos de Facturación:</h3>
+		</div>
+
+		<form id="datos">
 			<div>
 				<label for="nombre">Nombre</label>
-				<input type="text" name="nombre" placeholder="Nombre" />
+				<input
+					id="nombre"
+					type="text"
+					name="nombre"
+					placeholder="Nombre"
+				/>
 			</div>
 			<div>
 				<label for="apellido">Nombre</label>
-				<input type="text" name="apellido" placeholder="Apellido" />
+				<input
+					id="apellido"
+					type="text"
+					name="apellido"
+					placeholder="Apellido"
+				/>
 			</div>
 			<div>
 				<label for="cedula">C.I.-</label>
 				<input
+					id="cedula"
 					type="number"
 					name="cedula"
 					placeholder="Cédula de Identidad"
 				/>
 			</div>
 			<div>
+				<label for="sexo">Sexo</label>
+				<select name="sexo" id="sexo">
+					<option value="Hombre">Hombre</option>
+					<option value="Mujer">Mujer</option>
+				</select>
+			</div>
+			<div>
+				<label for="direccion">Dirección</label>
+				<input type="text" name="direccion" placeholder="Dirección" />
+			</div>
+			<div>
 				<label for="telefono">Teléfono</label>
-				<input type="number" name="telefono" placeholder="Teléfono" />
+				<input
+					id="telefono"
+					type="text"
+					name="telefono"
+					placeholder="Teléfono"
+				/>
+			</div>
+			<div>
+				<button type="button" name="continuar" value="continuar">
+					Continuar
+				</button>
+			</div>
+		</form>
+
+		<form id="productos">
+			<div id="producto1">
+				<label for="codigo">Código Producto: </label>
+				<input type="text" id="codigo" />
+
+				<label for="codigo">Tipo de Producto: </label>
+				<select name="tipo" id="tipo">
+					<option value="Laptop">Laptop</option>
+					<option value="Televisor">Televisor</option>
+					<option value="Microondas">Microondas</option>
+					<option value="Nevera">Nevera</option>
+					<option value="Cocina">Cocina</option>
+				</select>
+
+				<label for="codigo">Marca de Producto: </label>
+				<select name="marca" id="marca">
+					<option value="Toshiba">Toshiba</option>
+					<option value="Mabe">Mabe</option>
+					<option value="General Electric">General Electric</option>
+					<option value="Samsung">Samsung</option>
+					<option value="LG">LG</option>
+				</select>
+
+				<label for="precio">Precio</label>
+				<input name="precio" type="text" id="precio" />
 			</div>
 		</form>
 	</body>
+
+	<!-- FUNCIONES DE FACTURACION CON JAVASCRIPT -->
+
+	<script></script>
 </html>
