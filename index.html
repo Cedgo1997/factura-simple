@@ -35,7 +35,7 @@
 				<label for="cedula">C.I.-</label>
 				<input
 					id="cedula"
-					type="number"
+					type="text"
 					name="cedula"
 					placeholder="Cédula de Identidad"
 				/>
@@ -49,7 +49,7 @@
 			</div>
 			<div>
 				<label for="direccion">Dirección</label>
-				<input type="text" name="direccion" placeholder="Dirección" />
+				<input type="text" name="direccion" placeholder="Dirección" id="direccion" />
 			</div>
 			<div>
 				<label for="telefono">Teléfono</label>
@@ -59,11 +59,6 @@
 					name="telefono"
 					placeholder="Teléfono"
 				/>
-			</div>
-			<div>
-				<button type="button" name="continuar" value="continuar">
-					Continuar
-				</button>
 			</div>
 		</form>
 
@@ -93,10 +88,74 @@
 				<label for="precio">Precio</label>
 				<input name="precio" type="text" id="precio" />
 			</div>
+			<div>
+				<button
+					onclick="emitirFactura()"
+					type="button"
+					name="facturar"
+					value="facturar"
+				>
+					Facturar
+				</button>
+			</div>
 		</form>
 	</body>
 
 	<!-- FUNCIONES DE FACTURACION CON JAVASCRIPT -->
 
-	<script></script>
+	<script>
+		/* VARIABLES PARACLIENTE */
+		var nombreCompleto;
+		var cedula;
+		var sexo;
+		var telefono;
+		var direccion;
+
+		/* VARIABLES PARA PRODUCTOS */
+		var codigo;
+		var tipo;
+		var marca;
+		var precio;
+
+		/* VARIABLES PARA FACTURA */
+		var precio;
+		var iva = 0.12;
+		var descuento = 0.9;
+		var fecha = new Date();
+		var subtotal;
+		var total;
+
+		function emitirFactura() {
+			nombreCompleto =
+				document.getElementById('nombre').value +
+				' ' +
+				document.getElementById('apellido').value;
+			cedula = document.getElementById('cedula').value;
+			telefono = document.getElementById('telefono').value;
+			direccion = document.getElementById('direccion').value;
+			precio = document.getElementById('precio').value;
+
+			document.write('<h4> Nombre Cliente: </h4>' + nombreCompleto);
+			document.write('<h4> Dirección: </h4>' + direccion);
+			document.write('C.I.-: </h4>' + cedula);
+			document.write(
+				'<h4> Fecha de Emisión: </h4>' +
+					fecha.getDate() +
+					'/' +
+					(fecha.getMonth() + 1) +
+					'/' +
+					fecha.getFullYear()
+			);
+
+			subtotal = precio;
+			document.write('<h4>SUBTOTAL: </h4>' + subtotal);
+
+			if (parseInt(precio) >= 20000000) {
+				total = total * descuento;
+				document.write('<h3>TOTAL: </h3>' + total);
+			} else {
+				document.write('<h3>TOTAL: </h3>' + total);
+			}
+		}
+	</script>
 </html>
