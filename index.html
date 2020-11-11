@@ -9,7 +9,7 @@
 		<!-- DATOS DEL COMPRADOR -->
 
 		<div>
-			<h3>Ingrese sus Datos de Facturación:</h3>
+			<h3 id="title">Ingrese sus Datos de Facturación:</h3>
 		</div>
 
 		<form id="datos">
@@ -20,6 +20,7 @@
 					type="text"
 					name="nombre"
 					placeholder="Nombre"
+					required
 				/>
 			</div>
 			<div>
@@ -29,6 +30,7 @@
 					type="text"
 					name="apellido"
 					placeholder="Apellido"
+					required
 				/>
 			</div>
 			<div>
@@ -38,6 +40,7 @@
 					type="text"
 					name="cedula"
 					placeholder="Cédula de Identidad"
+					required
 				/>
 			</div>
 			<div>
@@ -49,7 +52,13 @@
 			</div>
 			<div>
 				<label for="direccion">Dirección</label>
-				<input type="text" name="direccion" placeholder="Dirección" id="direccion" />
+				<input
+					type="text"
+					name="direccion"
+					placeholder="Dirección"
+					id="direccion"
+					required
+				/>
 			</div>
 			<div>
 				<label for="telefono">Teléfono</label>
@@ -58,6 +67,7 @@
 					type="text"
 					name="telefono"
 					placeholder="Teléfono"
+					required
 				/>
 			</div>
 		</form>
@@ -101,10 +111,64 @@
 		</form>
 	</body>
 
-	<!-- FUNCIONES DE FACTURACION CON JAVASCRIPT -->
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		#title {
+			text-align: center;
+			font-size: 2em;
+		}
+		form {
+			padding: 1em;
+			background: #f9f9f9;
+			border: 1px solid #c1c1c1;
+			margin-top: 2rem;
+			max-width: 600px;
+			margin-left: auto;
+			margin-right: auto;
+			padding: 1em;
+		}
+		form input {
+			margin-bottom: 1rem;
+			background: #fff;
+			border: 1px solid #9c9c9c;
+		}
+		form button {
+			background: lightgrey;
+			padding: 0.7em;
+			border: 0;
+		}
+		form button:hover {
+			background: gold;
+		}
+
+		label {
+			text-align: left;
+			display: block;
+			padding: 0.5em 1.5em 0.5em 0;
+		}
+
+		input {
+			width: 100%;
+			padding: 0.7em;
+			margin-bottom: 0.5rem;
+		}
+		input:focus {
+			outline: 3px solid gold;
+		}
+
+		select {
+			width: 200px;
+			height: 30px;
+		}
+	</style>
+
+	<!-- FUNCIONES DE FACTURACION -->
 
 	<script>
-		/* VARIABLES PARACLIENTE */
+		/* VARIABLES PARA CLIENTE */
 		var nombreCompleto;
 		var cedula;
 		var sexo;
@@ -135,26 +199,41 @@
 			direccion = document.getElementById('direccion').value;
 			precio = document.getElementById('precio').value;
 
-			document.write('<h4> Nombre Cliente: </h4>' + nombreCompleto);
-			document.write('<h4> Dirección: </h4>' + direccion);
-			document.write('C.I.-: </h4>' + cedula);
+			document.write('<h2>FACTURA</h2>');
+
 			document.write(
-				'<h4> Fecha de Emisión: </h4>' +
+				'<strong> Nombre Cliente: </strong>' +
+					nombreCompleto +
+					'<br><br>'
+			);
+			document.write(
+				'<strong> Dirección: </strong>' + direccion + '<br><br>'
+			);
+			document.write('<strong> C.I.-: </strong>' + cedula + '<br><br>');
+			document.write(
+				'<strong> Fecha de Emisión: </strong>' +
 					fecha.getDate() +
 					'/' +
 					(fecha.getMonth() + 1) +
 					'/' +
-					fecha.getFullYear()
+					fecha.getFullYear() +
+					'<br><br>'
 			);
 
 			subtotal = precio;
-			document.write('<h4>SUBTOTAL: </h4>' + subtotal);
 
-			if (parseInt(precio) >= 20000000) {
-				total = total * descuento;
-				document.write('<h3>TOTAL: </h3>' + total);
+			document.write(
+				'<strong>SUBTOTAL: </strong>' + subtotal + '<br><br>'
+			);
+			document.write(
+				'<strong>IVA (12%): </strong>' + subtotal * iva + '<br><br>'
+			);
+			if (subtotal >= 20000000) {
+				total = subtotal * descuento;
+				document.write('<strong>Descuento</strong>');
+				document.write('<strong>TOTAL: </strong>' + total + '<br><br>');
 			} else {
-				document.write('<h3>TOTAL: </h3>' + total);
+				document.write('<strong>TOTAL: </strong>' + total + '<br><br>');
 			}
 		}
 	</script>
